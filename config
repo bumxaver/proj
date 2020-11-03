@@ -14,7 +14,7 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 11
-font pango:Jetbrains Mono Regular 10
+font pango:Jetbrains Mono Regular 11
 #exec --no-startup-id xrandr --output HDMI1 --left-of HDMI2
 
 
@@ -35,43 +35,66 @@ font pango:Jetbrains Mono Regular 10
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-#exec feh --bg-scale ~/Downloads/Pictures/star-citizen-5120x2880-game-shooter-space-simulator-strategy-cosmos-3820.jpg
 
 #exec_always ~/scri.sh
 
 exec_always --no-startup-id killall back4.sh 
-exec_always --no-startup-id sleep 1 && ~/Documents/foo-Wallpaper-Feh-Gif/back4.sh 0.0001 ~/Documents/foo-Wallpaper-Feh-Gif/gif/pixel.gif
+exec_always --no-startup-id sleep 1 && ~/Documents/git_trash/foo-Wallpaper-Feh-Gif/back4.sh 0.0001 ~/Documents/git_trash/foo-Wallpaper-Feh-Gif/gif/pixel.gif
+
+#exec --no-startup-id feh --bg-scale ~/Pictures/image.jpg
+
+# xfce4-notifyd
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 
 
-workspace 1 output HDMI1 
-workspace 2 output HDMI1 
-workspace 10 output HDMI2
+workspace 1 output HDMI-1 
+workspace 2 output HDMI-1 
+workspace 10 output HDMI-2
+
+
+# move focus between monitor
+bindsym $mod+Control+Left focus output left
+bindsym $mod+Control+Right focus output right
+bindsym $mod+Control+j focus output left
+bindsym $mod+Control+semicolon focus output right
 
 #exec --no-startup-id i3-msg 'workspace 1; /usr/bin/chromium-browser' 
 #exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox'
 
-#for_window [class="Firefox"] move container to workspace 1
-exec --no-startup-id firefox
+assign [class="Google Chrome"] 1
+exec --no-startup-id google-chrome
 
-for_window [class="Slack"] move container to workspace 10
+assign [class="Slack"] 10
 exec --no-startup-id slack
+
+for_window [class="Spotify"] floating enable move scratchpad
+for_window [class="keepassxc"] floating enable
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
+
+# start a keepassxc
+
+bindsym $mod+p exec keepassxc
 
 # scratcpad
 bindsym $mod+Shift+grave move scratchpad  
 bindsym $mod+grave scratchpad show
 
+bindsym $mod+o [class="Spotify"] scratchpad show
+
 # screenshot
-bindsym $mod+Print exec gnome-screenshot -i
+bindsym Print exec gnome-screenshot -i
 
 
 exec --no-startup-id exec nm-applet
-default_border pixel 0
+default_border pixel 3
 
 # guake 
-exec --no-startup-id guake
+#exec --no-startup-id guake
+
+# xfce4-drop-down
+bindsym F12 exec xfce4-terminal --drop-down
 
 #layout display gxkb
 #exec_always killall gxkb 
@@ -80,8 +103,12 @@ exec --no-startup-id guake
 # kill focused window
 bindsym $mod+Shift+q kill
 
+#rofi
+bindsym $mod+d exec "rofi -modi window,drun,run -show drun -sidebar-mode -font 'Jetbrains Mono Regular 12'  -terminal termite -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000'"
+bindsym $mod+Tab exec "rofi -show window rofi -terminal termite -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000'" 
+
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run -fn 'JetBrains Mono:bold:pixelsize=15'
 
 # Pulse Audio controls
 bindsym $mod+KP_Add exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -118,6 +145,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+
 # split in horizontal orientation
 bindsym $mod+h split h
 
@@ -133,10 +161,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+Alt_R floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Alt_R focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -190,7 +218,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 
-bindsym $mod+Shift+87 move container to workspace 1
+bindsym $mod+Control_L+87 move container to workspace 1
 bindsym $mod+Shift+88 move container to workspace 2
 bindsym $mod+Shift+89 move container to workspace 3
 bindsym $mod+Shift+83 move container to workspace 4
@@ -242,8 +270,10 @@ bindsym $mod+r mode "resize"
 # start nautilus
 bindsym $mod+Shift+n exec thunar
 # lock
-exec --no-startup-id xscreensaver 
-bindsym $mod+F12 exec xscreensaver-command -lock
+#exec --no-startup-id xscreensaver 
+#bindsym $mod+F12 exec xscreensaver-command -lock
+
+bindsym $mod+Scroll_Lock exec i3lock -c 000000
 
 #shutdown
 bindsym $mod+Shift+Pause exec shutdown -h now
