@@ -13,8 +13,11 @@ cp config ~/.config/i3/
 cp -r gtk-3.0 ~/.config
 cp -r gtk-4.0 ~/.config
 sudo cp qt-hidpi.sh /etc/profile.d
+sudo cp 40-libinput.conf /etc/X11/xorg.conf.d
 cp Xresources ~/.Xresources
+xrdb -merge ~/.Xresources
 
+cp xinitrc ~/.xinitrc
 
 #add layout
 setxkbmap "us,ru" ",winkeys" "grp:win_space_toggle,grp_led:scroll"
