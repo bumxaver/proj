@@ -14,8 +14,8 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango:Verdana 10.5
-font pango:Jetbrains Mono Medium 10.75
+font pango:Fira Code Medium 11.4
+#font pango:Jetbrains Mono Medium 10.75
 #font pango:monospace 11.3
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -36,6 +36,8 @@ bindsym $mod+Shift+End exec shutdown -h now
 # xfce4-notifyd
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 
+# picom
+exec --no-startup-id picom --backend glx --vsync -bG
 
 
 for_window [class="KeePassXC"] floating enable
@@ -53,12 +55,12 @@ bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 # i3lock
-#bindsym $mod+F12 exec i3lock -c 000000
+bindsym Mod4+l exec i3lock -c 000000
 
 #bindsym $mod+F12 exec i3lock --indicator --radius=168 --ring-width=10 --insidecolor=00000000 --ringcolor=f5f5f53f --keyhlcolor=197dd7ff --bshlcolor=6fa8dcff --separator=222222ff --insidevercolor=6fa8dc00 --ringvercolor=70aff5ff --insidewrongcolor=ff386000 --ringwrongcolor=e66c6cff --linecolor=22222200 --indpos=957:535 --verifcolor=f5f5f596 --veriftext='verifying...' --verifsize=29 --verif-font='DejaVu Sans' --wrongcolor=f5f5f596 --wrongtext='wrong!' --wrongsize=29 --wrong-font='DejaVu Sans' --noinputtext='no input' --clock --timecolor=197dd7ff --timesize=48 --time-font='DejaVu Sans' --timepos=957:535 --datecolor=197dd7ff --datesize=16 --date-font='DejaVu Sans' --datepos=957:565 --layoutcolor=0099edff --layoutsize=16 --layout-font='DejaVu Sans' --keylayout=1 --color=000000
 
 
-bindsym $mod+F12 exec i3lock --indicator --radius=168 --ring-width=10 --insidecolor=00000000 --ringcolor=f5f5f53f --keyhlcolor=197dd7ff --bshlcolor=6fa8dcff --separator=222222ff --insidevercolor=6fa8dc00 --ringvercolor=70aff5ff --insidewrongcolor=ff386000 --ringwrongcolor=e66c6cff --linecolor=22222200 --indpos=800:405 --verifcolor=f5f5f596 --veriftext='verifying...' --verifsize=29 --verif-font='DejaVu Sans' --wrongcolor=f5f5f596 --wrongtext='wrong!' --wrongsize=29 --wrong-font='DejaVu Sans' --noinputtext='no input' --clock --timecolor=197dd7ff --timesize=48 --time-font='DejaVuSans' --timepos=800:400 --datecolor=197dd7ff --datesize=16 --date-font='DejaVu Sans' --datepos=800:450 --layoutcolor=0099edff --layoutsize=16 --layout-font='DejaVu Sans' --keylayout=1 --color=000000
+#bindsym $mod+F12 exec i3lock --indicator --radius=168 --ring-width=10 --insidecolor=00000000 --ringcolor=f5f5f53f --keyhlcolor=197dd7ff --bshlcolor=6fa8dcff --separator=222222ff --insidevercolor=6fa8dc00 --ringvercolor=70aff5ff --insidewrongcolor=ff386000 --ringwrongcolor=e66c6cff --linecolor=22222200 --indpos=800:405 --verifcolor=f5f5f596 --veriftext='verifying...' --verifsize=29 --verif-font='DejaVu Sans' --wrongcolor=f5f5f596 --wrongtext='wrong!' --wrongsize=29 --wrong-font='DejaVu Sans' --noinputtext='no input' --clock --timecolor=197dd7ff --timesize=48 --time-font='DejaVuSans' --timepos=800:400 --datecolor=197dd7ff --datesize=16 --date-font='DejaVu Sans' --datepos=800:450 --layoutcolor=0099edff --layoutsize=16 --layout-font='DejaVu Sans' --keylayout=1 --color=000000
 
 
 
@@ -254,5 +256,5 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks
+        status_command i3status
 }
