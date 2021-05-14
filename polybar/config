@@ -54,22 +54,22 @@ module-margin-left = 1
 module-margin-right = 1
 
 ExecStart=/usr/bin/waybar
-font-0 = Fira Code Medium:pixelsize=11.5;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-0 = Verdana:Medium:size=12.3;1
+font-1 = unifont:fontformat=truetype:size=12:antialias=false;0
+font-2 = siji:pixelsize=12;1
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu battery temperature date
 
 tray-position = right
-tray-padding = 2
+tray-padding = 6
 ;tray-background = #0063ff
 tray-maxsize = 21
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
-;override-redirect = true
+#override-redirect = false
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
@@ -92,10 +92,14 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.secondary}
 
-label-layout = %layout%
+label-layout = %icon%
 label-layout-underline = ${colors.secondary}
 
-label-indicator-padding = 2
+layout-icon-0 = ru;RU
+layout-icon-1 = us;US
+label-indicator-on = %icon%
+
+label-indicator-padding = 1
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
@@ -141,7 +145,7 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
-label-mode-padding = 2 
+label-mode-padding = 0 
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
@@ -261,7 +265,7 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date =
 date-alt = " %Y-%m-%d"
@@ -389,7 +393,7 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = 🔇 
 label-open-foreground = ${colors.secondary}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
