@@ -1,0 +1,3 @@
+#!/bin/bash
+systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+systemctl --user start --now waybar
