@@ -25,7 +25,7 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 # Change $SCRIPT_DIR to the location of your scripts!
-command=~/.config/i3blocks/$BLOCK_NAME
+#command=~/.config/i3blocks/$BLOCK_NAME/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
@@ -35,36 +35,37 @@ markup=none
 # The second parameter overrides the mixer selection
 # See the script for details.
 
-[volume]
+#[volume]
 #label=♪
-label=VOL
-interval=once
-signal=10
+#label=VOL
+#interval=once
+#signal=10
 #STEP=5%
 
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
-[memory]
-label=MEM
-separator=false
-interval=30
+#[memory]
+#label=MEM 
+#command=~/.config/i3blocks/memory/memory
+#separator=false
+#interval=10
 
-[memory]
-label=SWAP
-instance=swap
-separator=false
-interval=30
+#[memory]
+#label=SWAP
+#instance=swap
+#separator=false
+#interval=30
 
 # Disk usage
 #
 # The directory defaults to $HOME if the instance is not specified.
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
-[disk]
-label=HOME
+#[disk]
+#label=HOME
 #DIR=/mnt/data
-interval=30
+#interval=30
 
 # Network interface monitoring
 #
@@ -72,89 +73,32 @@ interval=30
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 [iface]
 #IFACE=wlan0
+command=~/.config/i3blocks/iface/iface
 color=#00FF00
 interval=10
-separator=false
-
-[wifi]
-command=~/.config/i3blocks/wifi/wifi
-#INTERFACE=wlp3s0
-label=wifi:
-interval=10
-separator=false
-
-[bandwidth]
-#INTERFACE=eth0
-interval=5
+#separator=false
 
 # CPU usage
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
-[cpu_usage]
-label=CPU
-interval=10
-min_width=CPU 100.00%
+#[cpu_usage]
+#command=~/.config/i3blocks/cpu_usage/cpu_usage
+#label=CPU 
+#interval=5
+#min_width=CPU 100.00%
 #separator=false
 
 [load_average]
-label=LOAD
+command=~/.config/i3blocks/load_average/load_average
+label=LA 
 interval=10
-
-#[docker]                                                                  
-#command=~/.config/i3blocks/docker/docker
-#color=#0db7ed
-#interval=10
-#LABEL= 
-
-
-#[battery2]
-#command=~/.config/i3blocks/battery2/battery2
-#markup=pango
-#interval=30
-
-
-[pacman-updates]
-command=~/.config/i3blocks/arch-update/arch-update
-markup=pango
-interval=3600
-#QUIET=true
-WATCH=^linux.* ^pacman.*
-BASE_COLOR=#5fff5f
-UPDATE_COLOR=#FFFF85
-AUR=true
-LABEL= 
-
-# Battery indicator
-#
-# The battery instance defaults to 0.
-[battery]
-command=~/.config/i3blocks/battery/battery
-label=BAT 
-#label=⚡
-interval=10
-
 
 [volume-pulseaudio]
 command=~/.config/i3blocks/volume-pulseaudio/volume-pulseaudio
 interval=persist
 SUBSCRIBE=1
 USE_ALSA_NAME=1
-
-
-[keyindicator]
-command=~/.config/i3blocks/keyindicator/keyindicator
-#Allowed keys are CAPS and NUM
-KEY=CAPS
-markup=pango
-interval=once
-signal=11
-#TEXT_ON=CapsLockOn
-#TEXT_OFF=CapsLockOff
-#COLOR_ON=#00FF00
-#COLOR_OFF=#222222
-#BG_COLOR_ON=
-#BG_COLOR_OFF=
 
 [xkb_layout]
 command=~/.config/i3blocks/xkb_layout/xkb_layout
